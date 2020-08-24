@@ -5,7 +5,6 @@ from django.utils import timezone
 # Create your models here.
 class Author(models.Model):
   name = models.CharField(max_length=200)
-  added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   created_date = models.DateTimeField(default=timezone.now)
 
   def __str__(self):
@@ -14,12 +13,10 @@ class Author(models.Model):
 class Book(models.Model):
   title = models.CharField(max_length=200)
   description = models.CharField(max_length=300)  
-  author = models.ForeignKey(Author, on_delete=models.CASCADE)
-  added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+  # author = models.ForeignKey(Author, on_delete=models.CASCADE)
+  author = models.CharField(max_length=200)
   created_date = models.DateTimeField(default=timezone.now)
 
   def __str__(self):
     return self.title
 
-
-    
